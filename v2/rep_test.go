@@ -1,10 +1,20 @@
 package rep
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
+
+/// func doc
+func ExampleRep() {
+	rep := Repeat("a", 6)
+	fmt.Println(rep)
+	// Output: aaaaaa
+}
 
 func TestRep(t *testing.T) {
-	rep := Repeat("a")
-	expected := "aaaaa"
+	rep := Repeat("a", 6)
+	expected := "aaaaaa"
 
 	if rep != expected {
 		t.Errorf("expected '%s' but got '%s'", expected, rep)
@@ -14,6 +24,6 @@ func TestRep(t *testing.T) {
 // go test -bench=.
 func BenchmarkRep(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Repeat("a")
+		Repeat("a", 5)
 	}
 }
